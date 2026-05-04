@@ -1,0 +1,11 @@
+close all
+clear all
+
+x=-70:1:70;
+y=-70:1:70;
+[X, Y]=meshgrid(x, y);
+mu=4*10^(-7);
+I=1000;
+B= mu.*(I)./(2.*sqrt((X.^2+(Y-10).^2)));
+mesh (X,Y,1e6*abs(B));
+xlabel('x');ylabel('y')

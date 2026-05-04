@@ -1,0 +1,12 @@
+close all
+clear all
+
+x=-70:2:70;
+z=-70:2:70;
+[X, Z]=meshgrid(x, z);
+mu=4*10^(-7);
+I=1000;
+B= mu.*(I)./(2.*sqrt(X.^2));
+c = contour(X,Z,1e6*B, [3 5 10 100]);
+xlabel('x');ylabel('z')
+clabel(c)

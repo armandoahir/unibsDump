@@ -1,0 +1,16 @@
+%Campo magnetico generato da un filo di corrente passante per x,y=(0,10),
+%indefinito verso z
+close all
+clear all
+
+x=-70:2:70;
+z=0;
+[X, Z]=meshgrid(x, z);
+mu=4*10^(-7);
+I=1000;
+B= mu.*(I)./(2.*sqrt(X.^2));
+%C=mesh (X, Z, 1e6*B);
+plot(x, 1e6*B);
+xlabel('x');ylabel('z')
+%clabel(C)
+

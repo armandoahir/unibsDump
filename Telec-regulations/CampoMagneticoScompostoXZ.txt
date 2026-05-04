@@ -1,0 +1,23 @@
+close all
+clear all
+
+x=-70:2:70;
+z=-70:2:70;
+Y=10;
+[X, Z]=meshgrid(x, z);
+mu=4*10^(-7);
+I=1000;
+B= mu.*(I)./(2.*sqrt(X.^2 + Y.^2));
+Bx= B.*(Y./sqrt(X.^2+Y.^2));
+By= B.*(X./sqrt(X.^2+Y.^2));
+
+figure
+title('Bx');
+c = contour(X,Z,1e6*abs(Bx), [3 5 10 100]);
+xlabel('x');ylabel('z')
+clabel(c)
+
+figure
+c = contour(X,Z,1e6*abs(By), [3 5 10 100]);
+xlabel('x');ylabel('z')
+clabel(c)
