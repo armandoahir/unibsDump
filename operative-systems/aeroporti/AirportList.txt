@@ -1,0 +1,5 @@
+MXP	Milano Malpensa Airport		ITALY
+DEL	New Delhi Indira Ghandi Airport	INDIA
+BGY	Milano Bergamo Airport		ITALY
+STN	London Stansted airport		UK
+

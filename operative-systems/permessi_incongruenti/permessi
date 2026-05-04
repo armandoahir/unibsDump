@@ -1,0 +1,36 @@
+#!/bin/bash
+#Author Ahir A.
+
+if [ $# -eq 0 ]
+then
+echo "ERRORE! E' necessario dichiarare una directory."
+exit 1
+fi
+
+echo "AGGIUNGI o TOGLI permessi? [A/T]"
+read MODE
+case "$MODE" in 
+
+"A" | "a" )
+OCTAL=666;
+;;
+
+"T" | "t" )
+OCTAL=600;
+;;
+
+* )
+echo "Utilizzo modalità restrittiva"
+OCTAL=600;
+;;
+
+esac
+
+for DIRECTORY
+do 
+for INCONGRUENTE in $(find $DIRECTORY -perm 606 -user arma 2>/dev/null) #use user's name instead of arma
+do 
+echo "Cambio permessi di $INCONGRUENTE"
+chmod "$OCTAL" "$INCONGRUENTE"
+done
+done

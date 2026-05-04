@@ -1,0 +1,56 @@
+#!/bin/bash
+#Autori: Ahir A. - Bignotti S. - El Meskini M.
+
+FILE=$1
+
+if [ $# -eq 0 ]
+then
+        while [ "$VAR" != "end" ]
+        do
+                echo "Inserisci nome (end per uscire)"
+                read VAR
+
+                PUNTO=$(echo "$VAR" | grep -o "\." 2>/dev/null)
+                if [ -z $PUNTO ]
+                then
+                        NUM=$(grep "^$VAR-[0-9]" /var/log/rpmpkgs | wc -l)
+                        if [ $NUM -gt 0 ]
+                        then
+                                echo "Numero stringhe: $NUM"
+				 echo "$(grep "^$VAR-[0-9]" /var/log/rpmpkgs)"  $
+                        else
+                                echo "non esistono stringhe"
+                        fi
+
+                else
+                        echo " "
+                        echo "Stringa non valida: $VAR"
+                fi
+	done
+fi
+
+if [ $# -gt 1 ]
+then
+        echo "numero parametri non valido"
+fi
+
+if [ $# -eq 1 ]
+then
+        sort -u $FILE > rpmsorted.txt
+        for RIGA in $(cat rpmsorted.txt)
+        do
+                PUNTO=$(echo "$RIGA" | grep -o "\." 2>/dev/null)
+                if [ -z $PUNTO ]
+                then
+                        echo " "
+                        echo "stringa valida: $RIGA "
+                        echo "$(grep "^$RIGA-[0-9]" /var/log/rpmpkgs)"
+                else
+
+			 echo " "
+                        echo "Stringa non valida: $RIGA"
+                fi
+
+        done
+fi
+
