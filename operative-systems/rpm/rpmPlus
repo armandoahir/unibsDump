@@ -1,5 +1,5 @@
 #!/bin/bash
-#Autori: Ahir A. - El Meskini M.
+#Authors: Ahir A. - El Meskini M.
 
 FILE=$1
 
